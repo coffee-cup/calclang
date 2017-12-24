@@ -6,7 +6,6 @@ Simple programming language for a calculator. Allows creation of user defined fu
 
 ```
 // Variable def
-> x = 4
 > x = 4.0
 
 // Function def
@@ -15,3 +14,9 @@ Simple programming language for a calculator. Allows creation of user defined fu
 // Call
 > fn(a,b,c)
 ```
+
+## Todo
+
+- [ ] Improve parsing of floating point numbers
+- [ ] Evaluation
+- [ ] Save state between runs
