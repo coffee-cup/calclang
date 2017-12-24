@@ -11,8 +11,8 @@ import Lexer
 
 number :: Parser Expr
 number = do
-  n <- double
-  return (Lit $ fromIntegral n)
+  n <- try double
+  return (Lit n)
 
 variable :: Parser Expr
 variable = do
@@ -31,14 +31,14 @@ function = do
   symbol "="
   try (fnWithArgs name) <|> try (fnNoArgs name)
     where
-      fnNoArgs name  = do
-        body <- expr
-        return $ Function name [] body
       fnWithArgs name = do
         args <- commaSep identifier
         symbol "->"
         body <- expr
         return $ Function name args body
+      fnNoArgs name  = do
+        body <- expr
+        return $ Function name [] body
 
 call :: Parser Expr
 call = do

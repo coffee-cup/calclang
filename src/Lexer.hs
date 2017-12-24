@@ -30,8 +30,11 @@ parens = between (symbol "(") (symbol ")")
 commaSep :: Parser a -> Parser [a]
 commaSep p = p `sepBy` symbol ","
 
-double :: Parser Integer
-double = lexeme L.decimal
+integer :: Parser Integer
+integer = lexeme L.decimal
+
+double :: Parser Double
+double = lexeme L.float
 
 rword :: String -> Parser ()
 rword w = lexeme (string w *> notFollowedBy alphaNumChar)
